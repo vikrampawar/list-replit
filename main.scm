@@ -12,17 +12,17 @@
 
 ;-------------------------------
 ; shows how to call another procedure
-(define (sum-of-squares x y)
+(define (sum_of_squares x y)
   (+ (square x) (square y)))
 
-(sum-of-squares 6 8) ; returns 100
+(sum_of_squares 6 8) ; returns 100
 ;-------------------------------
 
 
 ;-------------------------------
-; call sum-of-squares
+; call sum_of_squares
 (define (f a)
-  (sum-of-squares (+ a 1) (* a 2)))
+  (sum_of_squares (+ a 1) (* a 2)))
 (f 5) ; returns 136
 
 
@@ -114,5 +114,20 @@
    (* 3 
       (- 6 2)
       (- 2 7)))             ; -0.24666666666666667
-          
+
+
+;-------------------------------
+; Exercise 1.3
+; 
+; Define a procedure that takes three numbers
+; as arguments and returns the sum of the squares of the 
+; two larger numbers.
+
+(define (sum_of_squares_of_larger_two x y z)
+  (cond ((and (< z x) (< z y)) (sum_of_squares x y))
+        ((and (< x y) (< x z)) (sum_of_squares y z))
+        (else  (sum_of_squares x z))))
+; (sum_of_squares_of_larger_two 2 3 4)        ; 25
+; (sum_of_squares_of_larger_two 3 2 4)        ; 25
+; (sum_of_squares_of_larger_two 3 4 2)        ; 25
 
